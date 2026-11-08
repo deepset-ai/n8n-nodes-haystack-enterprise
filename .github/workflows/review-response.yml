@@ -1,0 +1,11 @@
+name: Review response
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  respond:
+    if: github.event.issue.pull_request && startsWith(github.event.comment.body, '/')
+    uses: deepset-ai/dc-review-router/.github/workflows/respond.yml@main
+    secrets: inherit

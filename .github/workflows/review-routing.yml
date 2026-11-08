@@ -1,0 +1,12 @@
+name: Review routing
+
+on:
+  pull_request_target:
+    types: [labeled, unlabeled]
+
+jobs:
+  route:
+    if: github.event.label.name == 'review-roulette' ||
+      startsWith(github.event.label.name, 'team:')
+    uses: deepset-ai/dc-review-router/.github/workflows/route.yml@main
+    secrets: inherit

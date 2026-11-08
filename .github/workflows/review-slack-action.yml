@@ -1,0 +1,10 @@
+name: Slack action
+
+on:
+  repository_dispatch:
+    types: [slack-review-response]
+
+jobs:
+  apply:
+    uses: deepset-ai/dc-review-router/.github/workflows/slack-action.yml@main
+    secrets: inherit
